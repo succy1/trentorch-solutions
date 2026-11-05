@@ -14,15 +14,14 @@ def gaussian_eliminate(A, b):
     # TODO: Implement elimination on copies of A and b in lockstep,
     # from Theory.
     row = len(A)
-    U = A.astype(float).copy()
-    c = b.astype(float).copy()
-    
+    A = A.astype(float)
+    b = b.astype(float)
     for j in range(row):
         for i in range (j + 1, row):
-            multiplier = U[i][j] / U[j][j]
-            U[i] = U[i] - multiplier * U[j]
-            c[i] = c[i] - multiplier * c[j]
-    return (U, c)
+            multiplier = A[i][j] / A[j][j]
+            A[i] = A[i] - np.multiply(multiplier, A[j])
+            b[i] = b[i] - np.multiply(multiplier, b[j])
+    return (A, b)
 
 
 def back_substitute(U, c):
