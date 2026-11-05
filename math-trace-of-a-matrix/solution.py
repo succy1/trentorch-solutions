@@ -9,7 +9,7 @@ def trace(A):
         The sum of A's diagonal entries.
     """
     # TODO: Implement tr(A) = Sum_i A[i, i] from Theory.
-    return np.sum(A[i][i] for i in range(len(A[0])))
+    return np.sum(A[i][i] for i in range(A.shape[0]))
 
 
 def trace_of_product(A, B):
